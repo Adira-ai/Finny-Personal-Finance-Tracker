@@ -142,7 +142,17 @@ if st.session_state['logged_in']:
         # Total Income and Expenses
         total_income = st.session_state['data'][st.session_state['data']['Type'] == 'Income']['Amount'].sum()
         total_expenses = st.session_state['data'][st.session_state['data']['Type'] == 'Expense']['Amount'].sum()
-    
+                # Display Net Income, Expenses, and Available Budget in a Row
+        col1, col2, col3 = st.columns(3)
+        
+        col1.markdown("### **Net Income**")
+        col1.markdown(f"### ₹{total_income:.2f}")
+        
+        col2.markdown("### **Net Expenses**")
+        col2.markdown(f"### ₹{total_expenses:.2f}")
+        
+        col3.markdown("### **Available Budget**")
+        col3.markdown(f"### ₹{st.session_state['budget'] - total_expenses:.2f}")
         # Bar Chart: Budget Overview
         categories = ['Net Income', 'Remaining Budget', 'Expenses']
         values = [total_income, st.session_state['budget'] - total_expenses, total_expenses]
