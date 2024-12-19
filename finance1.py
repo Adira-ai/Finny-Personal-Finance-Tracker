@@ -148,7 +148,7 @@ if st.session_state['logged_in']:
         # Custom Styles
         net_income_color = "#A8E6CF"   # Matching bar color for Net Income
         net_expenses_color = "#FF7043" # Matching bar color for Expenses
-        available_budget_color = "#FFEB3B" # Matching bar color for Remaining Budget
+        available_budget_color = "#c3c45c" # Matching bar color for Remaining Budget
         
         # Net Income
         col1.markdown(f"""
@@ -176,7 +176,7 @@ if st.session_state['logged_in']:
         # Bar Chart: Budget Overview
         categories = ['Net Income', 'Remaining Budget', 'Expenses']
         values = [total_income, st.session_state['budget'] - total_expenses, total_expenses]
-        colors = ['#A8E6CF', '#FFEB3B', '#FF7043']
+        colors = ['#A8E6CF', '#c3c45c', '#FF7043']
     
         fig_bar = go.Figure(data=[go.Bar(
             x=values,
