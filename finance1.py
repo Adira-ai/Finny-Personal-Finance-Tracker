@@ -137,7 +137,7 @@ if st.session_state['logged_in']:
 
     # Dashboard Tab
     with tab1:
-        st.header("Dashboard")
+       
     
         # Total Income and Expenses
         total_income = st.session_state['data'][st.session_state['data']['Type'] == 'Income']['Amount'].sum()
@@ -145,14 +145,34 @@ if st.session_state['logged_in']:
                 # Display Net Income, Expenses, and Available Budget in a Row
         col1, col2, col3 = st.columns(3)
         
-        col1.markdown("### **Net Income**")
-        col1.markdown(f"### ₹{total_income:.2f}")
+        # Custom Styles
+        net_income_color = "#A8E6CF"   # Matching bar color for Net Income
+        net_expenses_color = "#FF7043" # Matching bar color for Expenses
+        available_budget_color = "#FFEB3B" # Matching bar color for Remaining Budget
         
-        col2.markdown("### **Net Expenses**")
-        col2.markdown(f"### ₹{total_expenses:.2f}")
+        # Net Income
+        col1.markdown(f"""
+            <div style="text-align: center;">
+                <h3 style="color: {net_income_color}; margin-bottom: 5px;">**Net Income**</h3>
+                <h2 style="color: {net_income_color}; margin-top: 0;">₹{total_income:.2f}</h2>
+            </div>
+        """, unsafe_allow_html=True)
         
-        col3.markdown("### **Available Budget**")
-        col3.markdown(f"### ₹{st.session_state['budget'] - total_expenses:.2f}")
+        # Net Expenses
+        col2.markdown(f"""
+            <div style="text-align: center;">
+                <h3 style="color: {net_expenses_color}; margin-bottom: 5px;">**Net Expenses**</h3>
+                <h2 style="color: {net_expenses_color}; margin-top: 0;">₹{total_expenses:.2f}</h2>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        # Available Budget
+        col3.markdown(f"""
+            <div style="text-align: center;">
+                <h3 style="color: {available_budget_color}; margin-bottom: 5px;">**Available Budget**</h3>
+                <h2 style="color: {available_budget_color}; margin-top: 0;">₹{st.session_state['budget'] - total_expenses:.2f}</h2>
+            </div>
+        """, unsafe_allow_html=True)
         # Bar Chart: Budget Overview
         categories = ['Net Income', 'Remaining Budget', 'Expenses']
         values = [total_income, st.session_state['budget'] - total_expenses, total_expenses]
