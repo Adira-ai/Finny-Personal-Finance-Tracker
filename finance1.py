@@ -153,7 +153,7 @@ if st.session_state['logged_in']:
         # Net Income
         col1.markdown(f"""
             <div style="text-align: center;">
-                <h3 style="color: {net_income_color}; margin-bottom: 2px;">Net Income</h3>
+                <h3 style="color: {net_income_color}; margin-bottom: -10px;">Net Income</h3>
                 <h2 style="color: {net_income_color}; margin-top: 0;">₹{total_income:.2f}</h2>
             </div>
         """, unsafe_allow_html=True)
@@ -161,7 +161,7 @@ if st.session_state['logged_in']:
         # Net Expenses
         col2.markdown(f"""
             <div style="text-align: center;">
-                <h3 style="color: {net_expenses_color}; margin-bottom: 2px;">Net Expenses</h3>
+                <h3 style="color: {net_expenses_color}; margin-bottom: -10px;">Net Expenses</h3>
                 <h2 style="color: {net_expenses_color}; margin-top: 0;">₹{total_expenses:.2f}</h2>
             </div>
         """, unsafe_allow_html=True)
@@ -169,7 +169,7 @@ if st.session_state['logged_in']:
         # Available Budget
         col3.markdown(f"""
             <div style="text-align: center;">
-                <h3 style="color: {available_budget_color}; margin-bottom: 2px;">Available Budget</h3>
+                <h3 style="color: {available_budget_color}; margin-bottom: -10px;">Available Budget</h3>
                 <h2 style="color: {available_budget_color}; margin-top: 0;">₹{st.session_state['budget'] - total_expenses:.2f}</h2>
             </div>
         """, unsafe_allow_html=True)
