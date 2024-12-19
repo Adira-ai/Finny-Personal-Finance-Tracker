@@ -149,7 +149,7 @@ if st.session_state['logged_in']:
         )])
         fig_bar.update_layout(
             title="Budget & Expenses Overview",
-            xaxis_title="Amount ($)",
+            xaxis_title="Amount (₹)",
             yaxis_title="Categories",
             template="plotly_dark",
             plot_bgcolor='rgba(0, 0, 0, 0)',
@@ -190,7 +190,7 @@ if st.session_state['logged_in']:
         fig_line.update_layout(
             title="Cumulative Spending Over Time",
             xaxis_title="Date",
-            yaxis_title="Cumulative Spending ($)",
+            yaxis_title="Cumulative Spending (₹)",
             template="plotly_dark",
             plot_bgcolor='rgba(0, 0, 0, 0)',
             paper_bgcolor='rgba(0, 0, 0, 0)'
@@ -201,7 +201,7 @@ if st.session_state['logged_in']:
     
         # Alert if over budget
         if total_expenses > st.session_state['budget']:
-            st.warning(f"Warning: Expenses exceed the allocated budget by ${total_expenses - st.session_state['budget']:.2f}", icon="⚠️")
+            st.warning(f"Warning: Expenses exceed the allocated budget by ₹{total_expenses - st.session_state['budget']:.2f}", icon="⚠️")
 
     # Add Transaction Tab
     with tab2:
@@ -230,7 +230,7 @@ if st.session_state['logged_in']:
         # Set Budget Section
         st.header("Set Budget")
         current_budget = st.session_state.get('budget', 0.0)
-        st.write(f"Current Budget: ${current_budget:.2f}")
+        st.write(f"Current Budget: ₹{current_budget:.2f}")
         
         new_budget = st.number_input("Set a new budget", min_value=0.0, step=0.01, key="set_budget")
         
@@ -239,7 +239,7 @@ if st.session_state['logged_in']:
                 st.error("Please provide a valid budget amount.")
             else:
                 st.session_state['budget'] = new_budget
-                st.success(f"Budget updated to ${new_budget:.2f}!")
+                st.success(f"Budget updated to ₹{new_budget:.2f}!")
 
 
     # Bill Reminders Tab
@@ -260,7 +260,7 @@ if st.session_state['logged_in']:
             for i, row in bill_reminders.iterrows():
                 col1, col2, col3, col4, col5, col6 = st.columns(6)
                 col1.write(row['bill_name'])
-                col2.write(f"${row['amount']:.2f}")
+                col2.write(f"₹{row['amount']:.2f}")
                 col3.write(row['due_date'])
                 col4.write(row['frequency'])
                 delete_button = col5.button("Delete", key=f"delete_{row['id']}_{i}")  # Ensures unique key
@@ -305,7 +305,7 @@ if st.session_state['logged_in']:
                 col1.write(row['Date'])
                 col2.write(row['Category'])
                 col3.write(row['Type'])
-                col4.write(f"${row['Amount']:.2f}")
+                col4.write(f"₹{row['Amount']:.2f}")
                 if col5.button("Delete", key=f"delete_{row['id']}"):
                     c.execute("DELETE FROM transactions WHERE id = ?", (row['id'],))
                     conn.commit()
