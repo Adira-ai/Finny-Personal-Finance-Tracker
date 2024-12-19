@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 from PIL import Image  # Import for mascot image
 
 # Load the mascot image
-mascot_path = r"C:\Users\Mulak\OneDrive\Desktop\New folder (3)\finny.png"
+mascot_path = "finny.png"
 mascot_image = Image.open(mascot_path)
 
 
@@ -45,7 +45,7 @@ conn.commit()
 import base64
 
 # Convert the image to base64
-with open("C:/Users/Mulak/OneDrive/Desktop/New folder (3)/finny.png", "rb") as image_file:
+with open("finny.png", "rb") as image_file:
     base64_image = base64.b64encode(image_file.read()).decode()
 
 # Display the welcome message and Finny image only if the user is not logged in
@@ -113,7 +113,7 @@ if st.session_state['logged_in']:
     
     # Convert the image to base64 for HTML embedding
     import base64
-    with open("C:/Users/Mulak/OneDrive/Desktop/New folder (3)/finny.png", "rb") as image_file:
+    with open("finny.png", "rb") as image_file:
         base64_image = base64.b64encode(image_file.read()).decode()
 
     # Use HTML to display the image in the sidebar
