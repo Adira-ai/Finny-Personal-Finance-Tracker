@@ -109,6 +109,14 @@ if not st.session_state['logged_in']:
 # Logged-In Features
 if st.session_state['logged_in']:
     st.sidebar.title(f"Welcome, {st.session_state['username']}!")
+    if st.sidebar.button("Logout", key="logout_btn"):
+        st.session_state['logged_in'] = False
+        st.session_state['username'] = ""
+        st.session_state['data'] = pd.DataFrame()
+        st.session_state['budget'] = 0.0
+        st.success("Logged out successfully!")
+        st.experimental_rerun()  # Refresh the app
+
 
     
     # Convert the image to base64 for HTML embedding
